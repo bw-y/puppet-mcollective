@@ -1,0 +1,20 @@
+main_collective = mcollective
+collectives = mcollective
+libdir = /usr/share/mcollective/plugins
+logger_type = console
+loglevel = warn
+
+# Plugins
+securityprovider = psk
+plugin.psk = 123456
+
+connector = activemq
+plugin.activemq.pool.size = 1
+plugin.activemq.pool.1.host = 127.0.0.1
+plugin.activemq.pool.1.port = 61613
+plugin.activemq.pool.1.user = mcollective
+plugin.activemq.pool.1.password = 678901
+
+# Facts
+factsource = yaml
+plugin.yaml = /etc/mcollective/facts.yaml

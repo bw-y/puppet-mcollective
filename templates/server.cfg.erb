@@ -1,0 +1,21 @@
+main_collective = <%= @main_collective %>
+collectives = <%= @collectives %>
+libdir = <%= @libdir %>
+logfile = <%= @logfile %>
+loglevel = <%= @loglevel %>
+daemonize = <%= @daemonize %>
+
+# Plugins
+securityprovider = <%= @securityprovider %>
+plugin.psk = <%= @plugin_psk %>
+
+connector = activemq
+plugin.activemq.pool.size = 1
+plugin.activemq.pool.1.host = <%= @middleware_hosts %>
+plugin.activemq.pool.1.port = <%= @middleware_port %>
+plugin.activemq.pool.1.user = <%= @middleware_user %>
+plugin.activemq.pool.1.password = <%= @middleware_password %>
+
+# Facts
+factsource = <%= @factsource %>
+plugin.yaml = <%= @plugin_yaml %>
