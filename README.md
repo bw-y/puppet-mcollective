@@ -72,7 +72,11 @@ mcollective服务开机启动，有效值true(启动)/false(不启动)   默认�
 #### `service_ensure`
 mcollective服务当前状态，有效值running/stopped    默认值：running
 
+### `stage`
+执行顺序，见stdlib::stages
+
+
 ## Limitations
 ```
-支持系统： ubuntu12.04/14.04  rhel/centos5/6
+支持系统： ubuntu(10.04/12.04/14.04)  rhel/centos(5/6)
 ```

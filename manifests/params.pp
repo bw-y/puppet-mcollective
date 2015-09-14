@@ -16,21 +16,22 @@ class mcollective::params {
   $factsource          = 'yaml'
   $plugin_yaml         = '/etc/mcollective/facts.yaml'
 
-  case $::osfamily {
-    'Debian' : {
+  case $::operatingsystem {
+    'Ubuntu': {
       $config_mode = 0640
       $provider    = 'apt'
       $libdir      = '/usr/share/mcollective/plugins'
       $pkgs_dir    = "$fs_dir/$module_name/$::operatingsystem/$::lsbdistcodename"
       case $::lsbdistcodename {
-        'trusty' : { $pre_pkgs = [ 'ruby-json' ] }
-        'precise': { $pre_pkgs = [ 'rubygems1.8', 'ruby-json' ] }
+        'lucid'   : { $pre_pkgs = ['rubygems1.8', 'libjson-ruby', 'libjson-ruby1.8'] }
+        'precise' : { $pre_pkgs = ['rubygems1.8', 'ruby-json'] }
+        'trusty'  : { $pre_pkgs = ['ruby-json'] }
         default: {
           fail("The ${module_name} module is not supported on an ${::lsbdistcodename} based system.")
         }
       }
     }
-    'Redhat': {
+    'Redhat','CentOS': {
       $provider     = 'yum'
       $config_mode  = 0644
       $pkgs_dir     = "$fs_dir/$module_name/$::osfamily/$::priosrelease"
@@ -44,7 +45,7 @@ class mcollective::params {
       }
     }
     default: {
-      fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
+      fail("The ${module_name} module is not supported on an ${::operatingsystem} based system.")
     }
   }
 }
