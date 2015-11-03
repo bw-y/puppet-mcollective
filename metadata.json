@@ -1,7 +1,7 @@
 {
-  "name": "mcollective",
+  "name": "hypers-mcollective",
   "version": "0.1.0",
-  "author": "bw-y",
+  "author": "baowei.yao@hypers.com",
   "summary": null,
   "license": "Apache 2.0",
   "source": "",
@@ -11,3 +11,4 @@
     {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ]
 }
+

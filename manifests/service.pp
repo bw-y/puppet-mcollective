@@ -1,3 +1,4 @@
+#
 class mcollective::service {
   if ( $::mcollective::service_ensure in [ 'running', 'stopped' ] )  {
     service { $::mcollective::service_name:

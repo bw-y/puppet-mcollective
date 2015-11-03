@@ -1,5 +1,5 @@
 class mcollective::params {
-  
+
   $fs_dir              = 'puppet:///modules'
   $setup_dir           = '/opt/puppet_mcollective'
    
@@ -17,11 +17,11 @@ class mcollective::params {
   $plugin_yaml         = '/etc/mcollective/facts.yaml'
 
   case $::operatingsystem {
-    'Ubuntu': {
+    'Ubuntu' : {
       $config_mode = 0640
       $provider    = 'apt'
       $libdir      = '/usr/share/mcollective/plugins'
-      $pkgs_dir    = "$fs_dir/$module_name/$::operatingsystem/$::lsbdistcodename"
+      $pkgs_dir    = "${fs_dir}/${module_name}/${::operatingsystem}/${::lsbdistcodename}"
       case $::lsbdistcodename {
         'lucid'   : { $pre_pkgs = ['rubygems1.8', 'libjson-ruby', 'libjson-ruby1.8'] }
         'precise' : { $pre_pkgs = ['rubygems1.8', 'ruby-json'] }
@@ -31,7 +31,7 @@ class mcollective::params {
         }
       }
     }
-    'Redhat','CentOS': {
+    'RedHat','CentOS' : {
       $provider     = 'yum'
       $config_mode  = 0644
       $pkgs_dir     = "$fs_dir/$module_name/$::osfamily/$::priosrelease"
@@ -45,7 +45,7 @@ class mcollective::params {
       }
     }
     default: {
-      fail("The ${module_name} module is not supported on an ${::operatingsystem} based system.")
+      fail("The ${module_name} module is not supported on an ${::osfamily} based system.")
     }
   }
 }

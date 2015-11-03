@@ -2,7 +2,11 @@ class mcollective (
   $server              = true,
   $client              = false,
 
-  $middleware_hosts    = 'puppet.bw-y.com',
+  $direct_addressing   = '1', 
+  $connector           = 'activemq',
+  $rabbitmq_vhost      = '/mcollective',
+  $middleware_size     = '1',
+  $middleware_hosts    = 'puppet.hypers.com.cn',
   $middleware_port     = '61613',
   $middleware_user     = 'mcollective',
   $middleware_password = 'pass',
@@ -10,9 +14,12 @@ class mcollective (
   $loglevel            = 'info',
   $logfile             = '/var/log/mcollective.log',
 
+  $identity            = undef,
+
   $service_enable      = true,
   $service_ensure      = 'running',
 
+  $stage               = 'runtime'
 ) inherits ::mcollective::params {
 
   validate_bool($server)

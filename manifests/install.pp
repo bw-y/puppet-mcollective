@@ -19,25 +19,24 @@ class mcollective::install {
     group   => 0,
   }
   
-  case $::osfamily {
-    'Redhat': {
+  Exec {
+    path      => '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin',
+    require   => File['manual_pkgs'],
+    logoutput => on_failure,
+    timeout   => 300,
+  }
+
+  case $::operatingsystem {
+    'RedHat','CentOS' : {
       exec { 'mcollective install':
-        onlyif    => 'test ! -f /usr/libexec/mcollective/mcollective/agent/puppet.rb',
-        path      => '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin',
-        command   => "rpm -Uvh $setup_dir/*.rpm",
-        require   => File['manual_pkgs'],
-        logoutput => on_failure,
-        timeout   => 300,
+        command => "rpm -Uvh $setup_dir/*.rpm",
+        onlyif  => 'test ! -f /usr/libexec/mcollective/mcollective/agent/puppet.rb',
       }
     }
-    'Debian': {
+    'Ubuntu' : {
       exec { 'mcollective install':
-        onlyif    => 'test ! -f /usr/share/mcollective/plugins/mcollective/agent/puppet.rb',
-        path      => '/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin',
-        command   => "dpkg -i $setup_dir/*.deb",
-        require   => File['manual_pkgs'],
-        logoutput => on_failure,
-        timeout   => 300,
+        command => "dpkg -i $setup_dir/*.deb",
+        onlyif  => 'test ! -f /usr/share/mcollective/plugins/mcollective/agent/puppet.rb',
       }
     }
     default: {
