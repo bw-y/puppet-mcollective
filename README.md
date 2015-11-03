@@ -80,5 +80,5 @@ node 'node.bw-y.com' {
 ## Limitations
 
 ```
-1、支持系统： ubuntu(10.04/12.04/14.04)  rhel/centos(5/6)
+支持系统： ubuntu(10.04/12.04/14.04)  rhel/centos(5/6)
 ```
