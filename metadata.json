@@ -1,14 +1,14 @@
 {
-  "name": "hypers-mcollective",
+  "name": "mcollective",
   "version": "0.1.0",
-  "author": "baowei.yao@hypers.com",
+  "author": "baowei.y@gmail.com",
   "summary": null,
   "license": "Apache 2.0",
-  "source": "",
+  "source": "git@github.com:bw-y/puppet-mcollective.git",
   "project_page": null,
   "issues_url": null,
   "dependencies": [
-    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+    {"name":"bw-y/puppetlabs-stdlib","version_requirement":">= 1.0.0"}
   ]
 }
 
