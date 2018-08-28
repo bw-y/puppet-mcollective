@@ -6,7 +6,7 @@ class mcollective (
   $connector           = 'activemq',
   $rabbitmq_vhost      = '/mcollective',
   $middleware_size     = '1',
-  $middleware_hosts    = 'puppet.hypers.com.cn',
+  $middleware_hosts    = 'puppet.bw-y.com',
   $middleware_port     = '61613',
   $middleware_user     = 'mcollective',
   $middleware_password = 'pass',
